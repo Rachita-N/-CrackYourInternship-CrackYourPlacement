@@ -1,0 +1,20 @@
+
+
+class Solution {
+    public int findPair(int n, int x, int[] arr) {
+        // code here
+        Arrays.sort(arr);
+        int l=0,r=1;
+        while (l<n && n>r) 
+        {
+            int diff=arr[r]-arr[l];
+            if (diff==x && l!=r)
+                return 1;
+            else if (diff<x) 
+                r++;
+            else 
+                l++;
+        }
+        return -1;
+    }
+}
