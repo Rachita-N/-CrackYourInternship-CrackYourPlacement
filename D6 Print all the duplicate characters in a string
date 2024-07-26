@@ -1,0 +1,28 @@
+import java.util.*;
+public class duplicatechar {
+
+    public static void duplicate(String s)
+    {
+        char ch[]=s.toCharArray();
+        Arrays.sort(ch);
+        String str=new String(ch);
+        for(int i=0;i<s.length();i++)
+        {
+            int count=1;
+            while(i<s.length()-1 && str.charAt(i)==str.charAt(i+1))
+            {
+                count++;
+                i++;
+            }
+            if(count>1)
+            {
+                System.out.println(str.charAt(i)+", count="+count);
+            }
+        }
+    }
+    public static void main(String[] args) 
+    {
+     String abc="Rachita";
+     duplicate(abc);   
+    }
+}
