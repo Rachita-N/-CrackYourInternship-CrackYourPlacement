@@ -1,0 +1,23 @@
+import java.util.Arrays;
+public class MinCostEqualElements 
+{
+    public static int minCostToMakeElementsEqual(int[] arr) 
+    {
+        Arrays.sort(arr);
+        int n=arr.length;
+        int median=arr[n/2];
+        int totalCost=0;
+        for(int x:arr) 
+        {
+            totalCost+=Math.abs(x-median);
+        }
+        return totalCost;
+    }
+    public static void main(String[] args) 
+    {
+        int[] arr1={1,100,101};
+        System.out.println("Minimum cost to make all elements equal for arr1: " + minCostToMakeElementsEqual(arr1));
+        int[] arr2={4, 6};
+        System.out.println("Minimum cost to make all elements equal for arr2: " + minCostToMakeElementsEqual(arr2));
+    }
+}
