@@ -1,0 +1,40 @@
+class Solution 
+{
+    public static int splitArray(int[] nums,int k) 
+    {
+     int low=0,high=0;
+        for(int i:nums)
+        {
+            low=Math.max(low,i);
+            high+=i;
+        }
+        
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(isPossible(nums,k,mid))
+            {
+                high=mid-1;
+            }
+            else    
+                low=mid+1;
+        }
+        return low;
+    }
+    public static boolean isPossible(int[] nums,int m,int limit)
+    {
+        int count=1,sum=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            sum+=nums[i];
+            if(sum>limit)
+            {
+                count++;
+                sum=nums[i];
+                if(count>m)
+                    return false;
+            }
+        }
+        return true;   
+    }
+}
