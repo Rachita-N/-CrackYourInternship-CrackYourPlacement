@@ -1,3 +1,4 @@
+WITHOUT QUEUE;
 class Solution {
     public List<String> letterCombinations(String digits) 
     {
@@ -39,5 +40,30 @@ class Solution {
 		else if(ch=='9')
 			return "wxyz";
 		return "";
+	} 
+}
+
+WITH QUEUE;
+class Solution {
+    public List<String> letterCombinations(String digits) 
+    {
+        if(digits.isEmpty())
+            return new ArrayList<>();
+        String[] mapping={"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        Queue<String> queue=new LinkedList<>();
+        queue.add("");
+        for(char digit:digits.toCharArray()) 
+        {
+            int index=digit-'2';
+            String letters=mapping[index];
+            int size=queue.size();
+            for(int i=0;i<size;i++) 
+            {
+                String current=queue.poll();
+                for(char letter:letters.toCharArray())
+                    queue.add(current + letter);
+            }
+        }
+        return new ArrayList<>(queue);
 	} 
 }
